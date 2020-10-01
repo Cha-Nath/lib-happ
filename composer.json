@@ -1,6 +1,6 @@
 {
-    "name": "nlib/lib-yaml",
-    "description": "Library Yaml",
+    "name": "nlib/lib-happ",
+    "description": "Library Hubspot Application",
     "license": "MIT",
     "require": {
         "php": "^7.1.3",
