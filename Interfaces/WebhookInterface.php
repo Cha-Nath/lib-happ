@@ -4,13 +4,25 @@ namespace Nlib\Happ\Interfaces;
 
 interface WebhookInterface {
 
+    /**
+     *
+     * @return void
+     */
     public function init() : void;
+
+    /**
+     *
+     * @param array $Webhooks
+     * @param string $namespace
+     * @return void
+     */
+    public function call(array $Webhooks, string $namespace) : void;
 
     /**
      *
      * @return string
      */
-    public function getEncodedJson() : string;
+    // public function getEncodedJson() : string;
 
     /**
      *
@@ -29,7 +41,7 @@ interface WebhookInterface {
      * @param string $encoded_json
      * @return self
      */
-    public function setEncodedJson(string $encoded_json);
+    // public function setEncodedJson(string $encoded_json);
 
     /**
      *
