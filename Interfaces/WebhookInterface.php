@@ -28,7 +28,7 @@ interface WebhookInterface {
      *
      * @return array
      */
-    public function getDecodedJson() : array;
+    public function getDecodedJson() : ?array;
 
     /**
      *
@@ -48,7 +48,7 @@ interface WebhookInterface {
      * @param array $decoded_json
      * @return self
      */
-    public function setDecodedJson(array $decoded_json);
+    public function setDecodedJson(?array $decoded_json);
 
     /**
      *

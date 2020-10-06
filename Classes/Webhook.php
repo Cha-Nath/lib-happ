@@ -4,6 +4,7 @@ namespace Nlib\Happ\Classes;
 
 use Nlib\Happ\Entity\WebhookEntity;
 use Nlib\Happ\Interfaces\WebhookInterface;
+use nlib\Instance\Traits\InstanceTrait;
 use nlib\Log\Traits\LogTrait;
 use nlib\Tool\Traits\ClassTrait;
 
@@ -11,6 +12,7 @@ class Webhook implements WebhookInterface {
 
     use LogTrait;
     use ClassTrait;
+    use InstanceTrait;
 
     protected $_decoded_json;
     protected $_encoded_json;
@@ -52,7 +54,7 @@ class Webhook implements WebhookInterface {
     #region Getter
 
     // public function getEncodedJson() : string { return $this->_encoded_json; }
-    public function getDecodedJson() : array { return $this->_decoded_json; }
+    public function getDecodedJson() : ?array { return $this->_decoded_json; }
     public function getNamespace() : string { return $this->_namespace; }
 
     #endregion
@@ -60,7 +62,7 @@ class Webhook implements WebhookInterface {
     #region Setter
 
     // public function setEncodedJson(string $encoded_json) : self { $this->_encoded_json = $encoded_json; return $this; }
-    public function setDecodedJson(array $decoded_json) : self { $this->_decoded_json = $decoded_json; return $this; }
+    public function setDecodedJson(?array $decoded_json) : self { $this->_decoded_json = $decoded_json; return $this; }
     public function setNamespace(string $namespace) : self { $this->_namespace = $namespace; return $this; }
 
     #endregion
