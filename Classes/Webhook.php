@@ -45,9 +45,13 @@ class Webhook implements WebhookInterface {
 
             $actions = explode('.', $type);
 
-            if(!empty($class = $actions[0]) && class_exists($namespace . ucfirst($class)))
-                if(!empty($method = $actions[1]) && method_exists($class, $method)) ;
-                    $response = (new $class)->{$method}($Webhook);
+            if(!empty($class = $actions[0]) && class_exists($class = $namespace . '\\' . ucfirst($class))) :
+                $Class = new $class;
+                if(!empty($method = $actions[1]) && method_exists($Class, $method)) :
+                    $response = $Class->{$method}($Webhook);
+                endif;
+            endif;
+
         endforeach;
     }
 
