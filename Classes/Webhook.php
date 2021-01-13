@@ -31,7 +31,9 @@ class Webhook implements WebhookInterface {
 
         // $this->setEncodedJson($json);
         $this->log([__CLASS__ . '::' . __FUNCTION__ => $json]);
-        $this->setDecodedJson(json_decode($json));
+        
+        if(!empty($decodedJson = json_decode($json))) if(!is_array($decodedJson)) $decodedJson = [$decodedJson];
+        $this->setDecodedJson($decodedJson);
     }
 
     public function call(array $Webhooks, string $namespace) : void {
