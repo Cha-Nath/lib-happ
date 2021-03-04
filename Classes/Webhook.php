@@ -38,12 +38,13 @@ class Webhook implements WebhookInterface {
 
     public function call(array $Webhooks, string $namespace) : void {
 
+        $log = __CLASS__ . '::' . __FUNCTION__;
         foreach($Webhooks as $Webhook) :
 
             $Webhook = $this->stdClass_recast(WebhookEntity::class, $Webhook);
             $method = 'getSubscriptionType';
             if(empty($type = $Webhook->$method()))
-                $this->dlog([__CLASS__ . '::' . __FUNCTION__ => 'Method "' . $method . '" cannot be empty.']);
+                $this->dlog([$log => 'Method "' . $method . '" cannot be empty.']);
 
             $actions = explode('.', $type);
 
@@ -51,7 +52,11 @@ class Webhook implements WebhookInterface {
                 $Class = new $class;
                 if(!empty($method = $actions[1]) && method_exists($Class, $method)) :
                     $response = $Class->{$method}($Webhook);
+                else :
+                    $this->log([$log => 'Method "' . $method . '" not exist in class "' . $class . '".']);
                 endif;
+            else :
+                $this->log([$log => 'Class "' . $class . '" not exist.']);
             endif;
 
         endforeach;
