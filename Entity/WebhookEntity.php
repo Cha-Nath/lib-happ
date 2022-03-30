@@ -3,7 +3,7 @@
 namespace Nlib\Happ\Entity;
 
 use Nlib\Happ\Interfaces\WebhookEntityInterface;
-use nlib\Orm\Classes\Entity;
+use Nlib\Entity\Classes\Entity;
 
 class WebhookEntity extends Entity implements WebhookEntityInterface {
 

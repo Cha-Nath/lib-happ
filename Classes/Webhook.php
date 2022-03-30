@@ -30,7 +30,7 @@ class Webhook implements WebhookInterface {
         $json = file_get_contents('php://input');
 
         // $this->setEncodedJson($json);
-        $this->log([__CLASS__ . '::' . __FUNCTION__ => $json]);
+        $this->log([$this->l() => $json]);
         
         if(!empty($decodedJson = json_decode($json))) if(!is_array($decodedJson)) $decodedJson = [$decodedJson];
         $this->setDecodedJson($decodedJson);
@@ -38,7 +38,7 @@ class Webhook implements WebhookInterface {
 
     public function call(array $Webhooks, string $namespace) : void {
 
-        $log = __CLASS__ . '::' . __FUNCTION__;
+        $log = $this->l();
         foreach($Webhooks as $Webhook) :
 
             $Webhook = $this->stdClass_recast(WebhookEntity::class, $Webhook);
