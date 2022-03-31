@@ -14,6 +14,6 @@
             "Nlib\\Happ\\": ""
         }
     },
-    "minimum-stability": "dev",
+
     "prefer-stable": true
 }
