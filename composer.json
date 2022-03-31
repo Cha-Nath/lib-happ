@@ -5,7 +5,6 @@
     "require": {
         "php": "^7.1.3|^8.0",
         "nlib/lib-log" : "dev-master@dev",
-        "nlib/lib-entity" : "dev-master@dev",
         "nlib/lib-list" : "dev-master@dev",
         "nlib/lib-tool" : "dev-master@dev"
     },
@@ -14,6 +13,6 @@
             "Nlib\\Happ\\": ""
         }
     },
-
+    "minimum-stability": "dev",
     "prefer-stable": true
 }
